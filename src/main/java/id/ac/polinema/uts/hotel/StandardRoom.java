@@ -30,7 +30,7 @@ public class StandardRoom {
         this.roomNo = roomNo;
         this.name = name;
         this.yearBuilt = yearBuilt;
-        this.available = available;
+        this.available = true;
         // TODO Bantuan: isi semua field. Kamar baru: apakah sedang terisi atau tidak?
         // Bagian 3: aturan validasi nama dan tahun sama dengan setter. Bisakah constructor
         // memakai setter-nya?
