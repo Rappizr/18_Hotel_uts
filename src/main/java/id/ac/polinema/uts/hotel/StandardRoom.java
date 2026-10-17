@@ -16,11 +16,8 @@ package id.ac.polinema.uts.hotel;
  *   public ____ yearBuilt;
  *   public ____ available;
  */
-public class StandardRoom {
+public class StandardRoom extends HotelRoom {
     private  String roomNo;
-    private String name;
-    private int yearBuilt;
-    private boolean available;
     private Facility facility;
 
     /**
@@ -28,13 +25,11 @@ public class StandardRoom {
      * Bagian 3: roomNo tidak boleh kosong; name dan yearBuilt divalidasi seperti setter-nya.
      */
     public StandardRoom(String roomNo, String name, int yearBuilt) {
+        super(name, yearBuilt);
         if (roomNo == null || roomNo.trim().isEmpty()) {
             throw new IllegalArgumentException("Nomor kamar tidak boleh kosong");
         }
         this.roomNo = roomNo;
-        this.available = true;
-        setName(name);
-        setYearBuilt(yearBuilt);
         // TODO Bantuan: isi semua field. Kamar baru: apakah sedang terisi atau tidak?
         // Bagian 3: aturan validasi nama dan tahun sama dengan setter. Bisakah constructor
         // memakai setter-nya?
@@ -57,99 +52,6 @@ public class StandardRoom {
         //
         // Kerangka:
         //   return ____;
-        // throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    public String getName() {
-        return name;
-        // TODO Bantuan: sama seperti getRoomNo.
-        // throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    public int getYearBuilt() {
-        return yearBuilt;
-        // TODO Bantuan: sama seperti getRoomNo.
-        // throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    /** True jika kamar kosong (belum dipesan). */
-    public boolean isAvailable() {
-        return available;
-        // TODO Bantuan: field apa yang menyimpan status kamar?
-        //
-        // Kerangka:
-        //   return ____;
-        // throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    /**
-     * Memesan kamar. Berhasil (true) jika kamar tersedia. Jika kamar sudah
-     * terisi, hasilnya false dan keadaan kamar tidak berubah.
-     */
-    public boolean reserve() {
-        if (available) {
-            available = false;
-            return true;
-        }
-        return false;
-        // TODO Bantuan: apa yang harus kamu periksa lebih dulu sebelum mengubah status?
-        // Method ini punya dua jalur return yang berbeda.
-        //
-        // Kerangka:
-        //   if (____) {
-        //       return false;
-        //   }
-        //   ____ = false;
-        //   return true;
-        // throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    /** Mengosongkan kamar: kamar bisa dipesan lagi. */
-    public void release() {
-        this.available = true;
-        // TODO Bantuan: satu baris saja. Status apa yang berubah?
-        //
-        // Kerangka:
-        //   ____ = true;
-        // throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    /**
-     * Bagian 3. Mengubah nama kamar. Nama null, kosong, atau hanya spasi ditolak
-     * dengan IllegalArgumentException, dan nama lama tetap.
-     */
-    public void setName(String name) {
-        if (name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Nama kamar tidak boleh kosong");
-        }
-        this.name = name;
-        // TODO Bantuan: periksa dulu, baru isi field. Class String punya method untuk
-        // memeriksa teks kosong atau hanya spasi. Jangan lupa kemungkinan null.
-        //
-        // Kerangka:
-        //   if (name == null || ____) {
-        //       throw new IllegalArgumentException("____");
-        //   }
-        //   this.name = name;
-        // throw new UnsupportedOperationException("Not implemented yet");
-    }
-
-    /**
-     * Bagian 3. Mengubah tahun dibangun. Tahun di bawah 1950 ditolak dengan
-     * IllegalArgumentException, dan tahun lama tetap.
-     */
-    public void setYearBuilt(int yearBuilt) {
-        if (yearBuilt < 1950) {
-            throw new IllegalArgumentException("Tahun dibangun minimal 1950");
-        }
-        this.yearBuilt = yearBuilt;
-        // TODO Bantuan: pola yang sama dengan setName. Apa syarat tahun yang valid?
-        //
-        // Kerangka:
-        //   if (yearBuilt ____ 1950) {
-        //       throw new IllegalArgumentException("____");
-        //   }
-        //   this.yearBuilt = yearBuilt;
         // throw new UnsupportedOperationException("Not implemented yet");
     }
 
