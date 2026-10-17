@@ -182,21 +182,21 @@ public class HotelApp {
     }
 
     private void checkIn(){
-        String guestId = readLine("Guest ID");
-        String roomName = readLine("Room name");
+        String guestId = readLine("Guest ID: ");
+        String roomName = readLine("Room name: ");
         if (hotel.checkIn(guestId, roomName)) {
-            out.println("Check-in successful");
-        } else {
-            out.println("Check-in failed");
+            out.println("Check-In successfull");
+        }else {
+            out.println("Check-out failed");
         }
     }
 
-    private void checkOut() {
+    private void checkOut(){
         String guestId = readLine("Guest ID: ");
         String roomName = readLine("Room name: ");
         if (hotel.checkOut(guestId, roomName)) {
-            out.println("Check-out successful");
-        } else {
+            out.println("Check-Out successfull");
+        }else {
             out.println("Check-out failed");
         }
     }
@@ -204,23 +204,23 @@ public class HotelApp {
     private void searchRooms(){
         String keyword = readLine("Keyword: ");
         HotelRoom[] results = hotel.searchByKeyword(keyword);
-        if (results.length == 0) {
-            out.println("No rooms found");
-            return;
-        }
-        for (HotelRoom r : results){
-            printRoomLine(r);
-        }
+            if (results.length == 0) {
+                out.println("No rooms found");
+                return;
+            }
+            for(HotelRoom r : results){
+                printRoomLine(r);
+            }
     }
 
-    private  void showGuests(){
-        Guest[] guests = hotel.getGuests();
-        if (guests.length == 0) {
+    private void showGuests(){
+        Guest[] guest = hotel.getGuests();
+        if (guest.length == 0) {
             out.println("No guests");
             return;
         }
-        for(Guest g : guests){
-            out.println(g.getGuestId() + " - " + g.getName() + " (" + g.getBookingCount() + " bookings");
+        for (Guest g : guest){
+            out.println(g.getGuestId() + " - "+ g.getName()+ " ("+ g.getBookingCount() + " bookings");
         }
     }
 }
