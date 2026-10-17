@@ -27,10 +27,15 @@ public class StandardRoom {
      * Bagian 3: roomNo tidak boleh kosong; name dan yearBuilt divalidasi seperti setter-nya.
      */
     public StandardRoom(String roomNo, String name, int yearBuilt) {
+        if (roomNo == null || roomNo.trim().isEmpty()) {
+            throw new IllegalArgumentException("Nomor kamar tidak boleh kosong");
+        }
         this.roomNo = roomNo;
         this.name = name;
         this.yearBuilt = yearBuilt;
         this.available = true;
+        setName(name);
+        setYearBuilt(yearBuilt);
         // TODO Bantuan: isi semua field. Kamar baru: apakah sedang terisi atau tidak?
         // Bagian 3: aturan validasi nama dan tahun sama dengan setter. Bisakah constructor
         // memakai setter-nya?
