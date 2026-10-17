@@ -75,11 +75,11 @@ public class HotelRoom {
         extendStay(2);
     }
 
-    public int getTotalNight(){
+    public int getTotalNights(){
         return 1 + extraNights;
     }
 
     public int getTotalPrice(){
-        return pricePerNight() * getTotalNight();
+        return pricePerNight() * getTotalNights();
     }
 }
