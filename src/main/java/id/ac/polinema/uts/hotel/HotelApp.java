@@ -185,9 +185,9 @@ public class HotelApp {
         String guestId = readLine("Guest ID: ");
         String roomName = readLine("Room name: ");
         if (hotel.checkIn(guestId, roomName)) {
-            out.println("Check-In successfull");
+            out.println("Check-In successful");
         }else {
-            out.println("Check-out failed");
+            out.println("Check-In failed");
         }
     }
 
@@ -195,7 +195,7 @@ public class HotelApp {
         String guestId = readLine("Guest ID: ");
         String roomName = readLine("Room name: ");
         if (hotel.checkOut(guestId, roomName)) {
-            out.println("Check-Out successfull");
+            out.println("Check-Out successful");
         }else {
             out.println("Check-out failed");
         }
@@ -220,7 +220,7 @@ public class HotelApp {
             return;
         }
         for (Guest g : guest){
-            out.println(g.getGuestId() + " - "+ g.getName()+ " ("+ g.getBookingCount() + " bookings");
+            out.println(g.getGuestId() + " - "+ g.getName()+ " ("+ g.getBookingCount() + " bookings)");
         }
     }
 }
