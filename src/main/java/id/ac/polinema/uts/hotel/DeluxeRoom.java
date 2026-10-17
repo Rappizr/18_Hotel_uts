@@ -18,4 +18,14 @@ public class DeluxeRoom extends HotelRoom {
         }
         this.viewType = viewType;
     }
+
+    @Override 
+    public int pricePerNight(){
+        return 650000;
+    }
+
+    @Override 
+    public String describe(){
+        return name + " (built " + yearBuilt + ") [" + viewType + " view]";
+    }
 }

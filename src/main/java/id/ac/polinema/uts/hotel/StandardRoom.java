@@ -46,6 +46,11 @@ public class StandardRoom extends HotelRoom {
         // throw new UnsupportedOperationException("Not implemented yet");
     }
 
+    public StandardRoom(String roomNo, String name, int yearBuilt, Facility facility){
+        this(roomNo, name, yearBuilt);
+        this.facility = facility;
+    }
+
     public String getRoomNo() {
         return roomNo;
         // TODO Bantuan: kembalikan data yang disimpan constructor.
@@ -61,5 +66,11 @@ public class StandardRoom extends HotelRoom {
 
     public void setFacility(Facility facility){
         this.facility = facility;
+    }
+
+    @Override 
+    public String describe(){
+        String facName = (facility != null) ? facility.getName() : "None";
+        return name + " (built " + yearBuilt + ") facikity: " + facName;
     }
 }

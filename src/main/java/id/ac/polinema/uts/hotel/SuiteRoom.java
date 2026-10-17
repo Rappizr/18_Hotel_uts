@@ -8,11 +8,20 @@ public class SuiteRoom extends HotelRoom {
         this.bedCount = bedCount;
     }
 
+    public SuiteRoom(String name, int yearBuilt){
+        this(name, yearBuilt, 2);
+    }
+
     public int getBedCount(){
         return bedCount;
     }
 
     public void setBedCount(int bedCount){
         this.bedCount = bedCount;
+    }
+
+    @Override 
+    public int pricePerNight(){
+        return 1200000;
     }
 }
