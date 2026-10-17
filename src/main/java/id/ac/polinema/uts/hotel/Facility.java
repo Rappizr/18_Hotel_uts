@@ -48,6 +48,7 @@ public class Facility {
     /** Teks berbentuk "nama [lantai]". Contoh: Rooftop Gym [Floor 9]. */
     public String getInfo() {
         return name + " [" + floorLocation + "]";
+        
         // TODO Bantuan: gabungkan dua data dengan operator + dan tanda kurung siku dalam String.
         //
         // Kerangka:
