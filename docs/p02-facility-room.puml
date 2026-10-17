@@ -1,0 +1,40 @@
+@startuml
+title Bagian 2: Facility dan StandardRoom
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam defaultFontSize 14
+skinparam roundCorner 8
+skinparam ArrowColor #1d4ed8
+skinparam ClassBorderColor #1d4ed8
+skinparam ClassBackgroundColor #ffffff
+skinparam ClassFontColor #111827
+skinparam ClassStereotypeFontColor #1d4ed8
+skinparam NoteBackgroundColor #fff1f2
+skinparam NoteBorderColor #dc2626
+hide circle
+hide empty members
+left to right direction
+class Facility {
+  +name : String
+  +floorLocation : String
+  --
+  +Facility(name : String, floorLocation : String)
+  +getName() : String
+  +getFloorLocation() : String
+  +getInfo() : String
+}
+class StandardRoom {
+  +roomNo : String
+  +name : String
+  +yearBuilt : int
+  +available : boolean
+  --
+  +StandardRoom(roomNo : String, name : String, yearBuilt : int)
+  +getRoomNo() : String
+  +getName() : String
+  +getYearBuilt() : int
+  +isAvailable() : boolean
+  +reserve() : boolean
+  +release() : void
+}
+@enduml

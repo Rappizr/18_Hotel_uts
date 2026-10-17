@@ -1,0 +1,78 @@
+@startuml
+title Bagian 4: Relasi Class
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam defaultFontSize 14
+skinparam roundCorner 8
+skinparam ArrowColor #1d4ed8
+skinparam ClassBorderColor #1d4ed8
+skinparam ClassBackgroundColor #ffffff
+skinparam ClassFontColor #111827
+skinparam ClassStereotypeFontColor #1d4ed8
+skinparam NoteBackgroundColor #fff1f2
+skinparam NoteBorderColor #dc2626
+hide circle
+hide empty members
+left to right direction
+class StandardRoom {
+  -roomNo : String
+  -name : String
+  -yearBuilt : int
+  -available : boolean
+  -facility : Facility
+  --
+  +StandardRoom(roomNo : String, name : String, yearBuilt : int)
+  +getFacility() : Facility
+  +setFacility(facility : Facility) : void
+  +isAvailable() : boolean
+  +reserve() : boolean
+  +release() : void
+}
+class Facility {
+  -name : String
+  -floorLocation : String
+}
+class Guest {
+  -guestId : String
+  -name : String
+  -bookingCount : int
+  -card : GuestCard
+  --
+  +Guest(guestId : String, name : String)
+  +getCard() : GuestCard
+  +canBook() : boolean
+  +addBooking() : boolean
+  +removeBooking() : boolean
+}
+class GuestCard <<buat kelas ini>> {
+  -number : String
+  --
+  +GuestCard(number : String)
+  +getNumber() : String
+}
+class Floor <<buat kelas ini>> {
+  -code : String
+  -rooms : StandardRoom[5]
+  -count : int
+  --
+  +Floor(code : String)
+  +getCode() : String
+  +getRoomCount() : int
+  +addRoom(room : StandardRoom) : boolean
+  +findByRoomNo(roomNo : String) : StandardRoom
+  +countAvailable() : int
+}
+class Receptionist <<buat kelas ini>> {
+  +checkIn(guest : Guest, room : StandardRoom) : boolean
+  +checkOut(guest : Guest, room : StandardRoom) : boolean
+}
+StandardRoom "*" --> "0..1" Facility : asosiasi
+Guest "1" *-- "1" GuestCard : komposisi
+Floor "1" o-- "0..5" StandardRoom : agregasi
+Receptionist ..> Guest : dependensi
+Receptionist ..> StandardRoom : dependensi
+note right of Guest
+  GuestCard dibuat di dalam constructor
+  nomor kartu = "GC-" + guestId
+end note
+@enduml

@@ -1,0 +1,95 @@
+@startuml
+title Diagram Kelas Lengkap: Reservasi Hotel Polinema
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam defaultFontSize 14
+skinparam roundCorner 8
+skinparam ArrowColor #1d4ed8
+skinparam ClassBorderColor #1d4ed8
+skinparam ClassBackgroundColor #ffffff
+skinparam ClassFontColor #111827
+skinparam ClassStereotypeFontColor #1d4ed8
+skinparam NoteBackgroundColor #fff1f2
+skinparam NoteBorderColor #dc2626
+hide circle
+hide empty members
+left to right direction
+class Main {
+  +{static} main(args : String[]) : void
+}
+class HotelApp {
+  -hotel : Hotel
+  -in : Scanner
+  -out : PrintStream
+  +HotelApp(hotel : Hotel, in : Scanner, out : PrintStream)
+  +run() : void
+}
+class Hotel {
+  -name : String
+  -rooms : HotelRoom[20]
+  -guests : Guest[10]
+  +addRoom(room : HotelRoom) : boolean
+  +addGuest(guest : Guest) : boolean
+  +findRoomByName(name : String) : HotelRoom
+  +searchByKeyword(keyword : String) : HotelRoom[]
+  +checkIn(guestId : String, roomName : String) : boolean
+  +checkOut(guestId : String, roomName : String) : boolean
+}
+class HotelRoom {
+  #name : String
+  #yearBuilt : int
+  -available : boolean
+  +pricePerNight() : int
+  +describe() : String
+  +extendStay() : void
+  +extendStay(nights : int) : void
+  +getTotalNights() : int
+}
+class StandardRoom {
+  -roomNo : String
+  -facility : Facility
+}
+class DeluxeRoom {
+  -viewType : String
+}
+class SuiteRoom {
+  -bedCount : int
+}
+class Facility {
+  -name : String
+  -floorLocation : String
+  +getInfo() : String
+}
+class Guest {
+  -guestId : String
+  -name : String
+  -bookingCount : int
+  -card : GuestCard
+  +canBook() : boolean
+}
+class GuestCard {
+  -number : String
+}
+class Floor {
+  -code : String
+  -rooms : StandardRoom[5]
+  +addRoom(room : StandardRoom) : boolean
+  +countAvailable() : int
+}
+class Receptionist {
+  +checkIn(guest : Guest, room : StandardRoom) : boolean
+  +checkOut(guest : Guest, room : StandardRoom) : boolean
+}
+Main ..> HotelApp
+HotelApp --> Hotel : asosiasi
+Hotel o-- "0..20" HotelRoom
+Hotel o-- "0..10" Guest
+HotelRoom <|-- StandardRoom
+HotelRoom <|-- DeluxeRoom
+HotelRoom <|-- SuiteRoom
+StandardRoom --> "0..1" Facility : asosiasi
+Guest *-- GuestCard : komposisi
+Floor o-- "0..5" StandardRoom : agregasi
+Receptionist ..> Guest
+Receptionist ..> StandardRoom
+@enduml

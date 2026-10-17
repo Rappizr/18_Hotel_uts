@@ -1,0 +1,65 @@
+@startuml
+title Bagian 3: Enkapsulasi
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam defaultFontSize 14
+skinparam roundCorner 8
+skinparam ArrowColor #1d4ed8
+skinparam ClassBorderColor #1d4ed8
+skinparam ClassBackgroundColor #ffffff
+skinparam ClassFontColor #111827
+skinparam ClassStereotypeFontColor #1d4ed8
+skinparam NoteBackgroundColor #fff1f2
+skinparam NoteBorderColor #dc2626
+hide circle
+hide empty members
+left to right direction
+class Facility {
+  -name : String
+  -floorLocation : String
+  --
+  +Facility(name : String, floorLocation : String)
+  +getName() : String
+  +getFloorLocation() : String
+  +getInfo() : String
+}
+class StandardRoom {
+  -roomNo : String
+  -name : String
+  -yearBuilt : int
+  -available : boolean
+  --
+  +StandardRoom(roomNo : String, name : String, yearBuilt : int)
+  +getRoomNo() : String
+  +getName() : String
+  +getYearBuilt() : int
+  +setName(name : String) : void
+  +setYearBuilt(yearBuilt : int) : void
+  +isAvailable() : boolean
+  +reserve() : boolean
+  +release() : void
+}
+class Guest <<buat kelas ini>> {
+  -guestId : String
+  -name : String
+  -bookingCount : int
+  --
+  +Guest(guestId : String, name : String)
+  +getGuestId() : String
+  +getName() : String
+  +setName(name : String) : void
+  +getBookingCount() : int
+  +canBook() : boolean
+  +addBooking() : boolean
+  +removeBooking() : boolean
+}
+note bottom of StandardRoom
+  name: tidak boleh null/kosong
+  yearBuilt: minimal 1950
+  tanpa setter untuk roomNo dan available
+end note
+note bottom of Guest
+  batas 2 pemesanan
+  tanpa setter untuk guestId dan bookingCount
+end note
+@enduml

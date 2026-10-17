@@ -1,0 +1,74 @@
+@startuml
+title Bagian 6: Overriding dan Overloading
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam defaultFontSize 14
+skinparam roundCorner 8
+skinparam ArrowColor #1d4ed8
+skinparam ClassBorderColor #1d4ed8
+skinparam ClassBackgroundColor #ffffff
+skinparam ClassFontColor #111827
+skinparam ClassStereotypeFontColor #1d4ed8
+skinparam NoteBackgroundColor #fff1f2
+skinparam NoteBorderColor #dc2626
+hide circle
+hide empty members
+left to right direction
+class HotelRoom {
+  #name : String
+  #yearBuilt : int
+  -available : boolean
+  -extraNights : int
+  --
+  +pricePerNight() : int
+  +describe() : String
+  +toString() : String
+  +extendStay() : void
+  +extendStay(nights : int) : void
+  +getTotalNights() : int
+  +getTotalPrice() : int
+}
+class StandardRoom {
+  -roomNo : String
+  -facility : Facility
+  --
+  +StandardRoom(roomNo : String, name : String, yearBuilt : int)
+  +StandardRoom(roomNo : String, name : String, yearBuilt : int, facility : Facility)
+  +describe() : String
+}
+class DeluxeRoom {
+  -viewType : String
+  --
+  +pricePerNight() : int
+  +describe() : String
+}
+class SuiteRoom {
+  -bedCount : int
+  --
+  +SuiteRoom(name : String, yearBuilt : int, bedCount : int)
+  +SuiteRoom(name : String, yearBuilt : int)
+  +pricePerNight() : int
+}
+HotelRoom <|-- StandardRoom
+HotelRoom <|-- DeluxeRoom
+HotelRoom <|-- SuiteRoom
+note bottom of HotelRoom
+  pricePerNight() = 400000
+  extendStay() menambah 2 malam
+  getTotalNights() = 1 + perpanjangan
+  getTotalPrice() = pricePerNight() x getTotalNights()
+end note
+note bottom of DeluxeRoom
+  override: pricePerNight() = 650000
+  describe() = super.describe() + " [" + viewType + " view]"
+end note
+note bottom of SuiteRoom
+  override: pricePerNight() = 1200000
+  constructor 2 parameter: bedCount = 2
+  describe() tidak di-override
+end note
+note bottom of StandardRoom
+  pricePerNight() TIDAK di-override (400000)
+  describe() = super.describe() + " facility: " + nama / "None"
+end note
+@enduml

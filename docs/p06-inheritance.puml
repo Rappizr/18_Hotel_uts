@@ -1,0 +1,59 @@
+@startuml
+title Bagian 5: Inheritance
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam defaultFontSize 14
+skinparam roundCorner 8
+skinparam ArrowColor #1d4ed8
+skinparam ClassBorderColor #1d4ed8
+skinparam ClassBackgroundColor #ffffff
+skinparam ClassFontColor #111827
+skinparam ClassStereotypeFontColor #1d4ed8
+skinparam NoteBackgroundColor #fff1f2
+skinparam NoteBorderColor #dc2626
+hide circle
+hide empty members
+left to right direction
+class HotelRoom <<buat kelas ini>> {
+  #name : String
+  #yearBuilt : int
+  -available : boolean
+  --
+  +HotelRoom(name : String, yearBuilt : int)
+  +getName() : String
+  +getYearBuilt() : int
+  +setName(name : String) : void
+  +setYearBuilt(yearBuilt : int) : void
+  +isAvailable() : boolean
+  +reserve() : boolean
+  +release() : void
+}
+class StandardRoom {
+  -roomNo : String
+  -facility : Facility
+  --
+  +StandardRoom(roomNo : String, name : String, yearBuilt : int)
+  +getRoomNo() : String
+  +getFacility() : Facility
+  +setFacility(facility : Facility) : void
+}
+class DeluxeRoom <<buat kelas ini>> {
+  -viewType : String
+  --
+  +DeluxeRoom(name : String, yearBuilt : int, viewType : String)
+  +getViewType() : String
+}
+class SuiteRoom <<buat kelas ini>> {
+  -bedCount : int
+  --
+  +SuiteRoom(name : String, yearBuilt : int, bedCount : int)
+  +getBedCount() : int
+}
+HotelRoom <|-- StandardRoom
+HotelRoom <|-- DeluxeRoom
+HotelRoom <|-- SuiteRoom
+note bottom of StandardRoom
+  name, yearBuilt, available dan method umum
+  pindah ke HotelRoom
+end note
+@enduml

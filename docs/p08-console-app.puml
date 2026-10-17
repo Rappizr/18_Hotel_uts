@@ -1,0 +1,63 @@
+@startuml
+title Bagian 7: Aplikasi Konsol
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam defaultFontSize 14
+skinparam roundCorner 8
+skinparam ArrowColor #1d4ed8
+skinparam ClassBorderColor #1d4ed8
+skinparam ClassBackgroundColor #ffffff
+skinparam ClassFontColor #111827
+skinparam ClassStereotypeFontColor #1d4ed8
+skinparam NoteBackgroundColor #fff1f2
+skinparam NoteBorderColor #dc2626
+hide circle
+hide empty members
+left to right direction
+class Main {
+  +{static} main(args : String[]) : void
+}
+class HotelApp <<buat kelas ini>> {
+  -hotel : Hotel
+  -in : Scanner
+  -out : PrintStream
+  --
+  +HotelApp(hotel : Hotel, in : Scanner, out : PrintStream)
+  +run() : void
+}
+class Hotel <<buat kelas ini>> {
+  -name : String
+  -rooms : HotelRoom[20]
+  -roomCount : int
+  -guests : Guest[10]
+  -guestCount : int
+  --
+  +Hotel(name : String)
+  +getName() : String
+  +addRoom(room : HotelRoom) : boolean
+  +addGuest(guest : Guest) : boolean
+  +getRooms() : HotelRoom[]
+  +getGuests() : Guest[]
+  +findRoomByName(name : String) : HotelRoom
+  +findGuest(guestId : String) : Guest
+  +searchByKeyword(keyword : String) : HotelRoom[]
+  +checkIn(guestId : String, roomName : String) : boolean
+  +checkOut(guestId : String, roomName : String) : boolean
+}
+class HotelRoom
+class Guest
+class StandardRoom
+class DeluxeRoom
+class SuiteRoom
+Main ..> Hotel : dependensi
+Main ..> HotelApp : dependensi
+HotelApp "1" --> "1" Hotel : asosiasi
+Hotel "1" o-- "0..20" HotelRoom : agregasi
+Hotel "1" o-- "0..10" Guest : agregasi
+HotelRoom <|-- StandardRoom
+HotelRoom <|-- DeluxeRoom
+HotelRoom <|-- SuiteRoom
+note bottom of HotelRoom
+  Isi lengkap: lihat diagram Bagian 6
+end note
+@enduml
