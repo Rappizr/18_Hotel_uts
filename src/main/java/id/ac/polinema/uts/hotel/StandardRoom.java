@@ -21,6 +21,7 @@ public class StandardRoom {
     private String name;
     private int yearBuilt;
     private boolean available;
+    private Facility facility;
 
     /**
      * Membuat kamar baru yang masih tersedia (belum dipesan).
@@ -150,5 +151,13 @@ public class StandardRoom {
         //   }
         //   this.yearBuilt = yearBuilt;
         // throw new UnsupportedOperationException("Not implemented yet");
+    }
+
+    public Facility geFacility(){
+        return facility;
+    }
+
+    public void setFacility(Facility facility){
+        this.facility = facility;
     }
 }

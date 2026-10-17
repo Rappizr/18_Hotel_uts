@@ -18,6 +18,7 @@ public class Guest {
     private String guestId;
     private String name;
     private int bookingCount;
+    private GuestCard card;
 
     /**
      * Membuat tamu yang belum punya pemesanan.
@@ -31,6 +32,7 @@ public class Guest {
         this.guestId = guestId;
         setName(name);
         this.bookingCount = 0;
+        this.card = new GuestCard("GC-"+guestId);
         // TODO Bantuan: validasi dulu sebelum mengisi field. Aturan nama sama dengan setName.
         // Bagian 4: kartu tamu juga dibuat di sini (lihat diagram Bagian 4).
         //
@@ -122,5 +124,9 @@ public class Guest {
         //   bookingCount--;
         //   return true;
         // throw new UnsupportedOperationException("Not implemented yet");
+    }
+
+    public GuestCard getCard(){
+        return card;
     }
 }
