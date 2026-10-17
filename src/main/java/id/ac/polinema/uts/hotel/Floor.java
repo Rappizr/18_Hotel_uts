@@ -5,7 +5,7 @@ public class Floor {
     private StandardRoom[] rooms;
     private int roomCount;
 
-    public Floor(String count){
+    public Floor(String code){
         this.code = code;
         this.rooms = new StandardRoom[5];
         this.roomCount = 0;

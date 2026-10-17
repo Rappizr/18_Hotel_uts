@@ -153,7 +153,7 @@ public class StandardRoom {
         // throw new UnsupportedOperationException("Not implemented yet");
     }
 
-    public Facility geFacility(){
+    public Facility getFacility(){
         return facility;
     }
 
