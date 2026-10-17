@@ -31,8 +31,6 @@ public class StandardRoom {
             throw new IllegalArgumentException("Nomor kamar tidak boleh kosong");
         }
         this.roomNo = roomNo;
-        this.name = name;
-        this.yearBuilt = yearBuilt;
         this.available = true;
         setName(name);
         setYearBuilt(yearBuilt);
@@ -120,7 +118,7 @@ public class StandardRoom {
      * dengan IllegalArgumentException, dan nama lama tetap.
      */
     public void setName(String name) {
-        if (name == null || roomNo.trim().isEmpty()) {
+        if (name == null || name.trim().isEmpty()) {
             throw new IllegalArgumentException("Nama kamar tidak boleh kosong");
         }
         this.name = name;

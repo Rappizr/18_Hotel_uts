@@ -1,7 +1,5 @@
 package id.ac.polinema.uts.hotel;
 
-import java.util.PrimitiveIterator;
-
 /**
  * Bagian 3: tamu hotel.
  *
