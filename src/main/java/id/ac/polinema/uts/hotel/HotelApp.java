@@ -185,9 +185,9 @@ public class HotelApp {
         String guestId = readLine("Guest ID: ");
         String roomName = readLine("Room name: ");
         if (hotel.checkIn(guestId, roomName)) {
-            out.println("Check-In Successful");
+            out.println("Check-in Successful");
         }else {
-            out.println("Check-In Failed");
+            out.println("Check-in Failed");
         }
     }
 
@@ -195,9 +195,9 @@ public class HotelApp {
         String guestId = readLine("Guest ID: ");
         String roomName = readLine("Room name: ");
         if (hotel.checkOut(guestId, roomName)) {
-            out.println("Check-Out Successful");
+            out.println("Check-out Successful");
         }else {
-            out.println("Check-Out Failed");
+            out.println("Check-out Failed");
         }
     }
 
