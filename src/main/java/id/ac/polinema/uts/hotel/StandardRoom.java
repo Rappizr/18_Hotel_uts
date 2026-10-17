@@ -120,6 +120,10 @@ public class StandardRoom {
      * dengan IllegalArgumentException, dan nama lama tetap.
      */
     public void setName(String name) {
+        if (name == null || roomNo.trim().isEmpty()) {
+            throw new IllegalArgumentException("Nama kamar tidak boleh kosong");
+        }
+        this.name = name;
         // TODO Bantuan: periksa dulu, baru isi field. Class String punya method untuk
         // memeriksa teks kosong atau hanya spasi. Jangan lupa kemungkinan null.
         //
@@ -136,6 +140,10 @@ public class StandardRoom {
      * IllegalArgumentException, dan tahun lama tetap.
      */
     public void setYearBuilt(int yearBuilt) {
+        if (yearBuilt < 1950) {
+            throw new IllegalArgumentException("Tahun dibangun minimal 1950");
+        }
+        this.yearBuilt = yearBuilt;
         // TODO Bantuan: pola yang sama dengan setName. Apa syarat tahun yang valid?
         //
         // Kerangka:
