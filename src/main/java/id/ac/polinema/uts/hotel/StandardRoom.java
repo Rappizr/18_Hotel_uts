@@ -71,6 +71,6 @@ public class StandardRoom extends HotelRoom {
     @Override 
     public String describe(){
         String facName = (facility != null) ? facility.getName() : "None";
-        return name + " (built " + yearBuilt + ") facikity: " + facName;
+        return name + " (built " + yearBuilt + ") facility: " + facName;
     }
 }
