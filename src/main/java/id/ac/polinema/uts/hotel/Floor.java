@@ -42,7 +42,9 @@ public class Floor {
     public int countAvailable(){
         int count = 0;
         for(int i = 0; i < roomCount; i++){
-            count++;
+            if (rooms[i] != null && rooms[i].isAvailable()) {
+                count++;   
+            }
         }
         return count;
     }
