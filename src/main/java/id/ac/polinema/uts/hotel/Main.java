@@ -12,6 +12,7 @@ package id.ac.polinema.uts.hotel;
 public class Main {
 
     public static void main(String[] args) {
+        System.out.println("Welcome to Polinema Hotel");
         // TODO: Tampilkan sebuah teks ke layar.
         // Di Java, perintahnya berbentuk: System.out.println("teks kamu");
         // Ganti teks di dalam tanda kutip dengan teks dari soal. Huruf besar-kecil dan
